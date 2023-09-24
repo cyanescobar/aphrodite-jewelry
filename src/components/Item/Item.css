@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.CardItem{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 10px;
+    padding: 20px;
+}
+.btn{
+    border-color: magenta;
+}
+.ItemImg{
+    width: 150px;
+    height: 170px;
+}
