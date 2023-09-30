@@ -1,11 +1,17 @@
-import '../ItemList/ItemList.css';
-import Item from '../Item/Item';
+import "../ItemList/ItemList.css";
+import Item from "../Item/Item";
 
-const ItemList = ({products }) => {
-    return(
-            <div className='d-flex' id='itemlist'>
-            {products.map(prod => <Item key={prod.id} {...prod} />)}
-         </div>
-    )
+const ItemList = ({item}) => {
+  return (
+    <div className="row" id="itemlist">
+      {item.map(item =>
+       <div className="col-md-3"
+          key={item.id}>
+         <Item item={item}/> 
+       </div>
+      )}
+   </div>
+  )
 }
+
 export default ItemList

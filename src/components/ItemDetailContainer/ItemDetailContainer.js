@@ -1,23 +1,29 @@
-import '../ItemDetailContainer/ItemDetailContainer.css';
-import { useState, useEffect } from 'react';
-import { getProductById } from '../asyncMock';
-import ItemDetail from '../ItemDetail/ItemDetail';
-import { useParams } from 'react-router-dom'
+import "../ItemDetailContainer/ItemDetailContainer.css";
+import React from "react";
+import { useEffect, useState } from "react";
+import {useParams} from "react-router-dom";
+import arrayProductos from "../../Json/arrayProductos.json";
+import ItemDetail from "../ItemDetail/ItemDetail";
+
 
 const ItemDetailContainer = () => {
-    const [product, setProduct] = useState(null)
-    const { itemId } = useParams()
+  const [item, setItem] = useState([]);
+  const {id} = useParams();
 
-    useEffect (() => {
-        getProductById('itemId')
-         .then(response => {
-            setProduct(response)
-         })
-    }, [itemId])
-    
+  useEffect(()=>{
+   const promesa = new Promise((resolve)=>{
+     setTimeout(()=>{
+       resolve(arrayProductos.find(item=> item.id === parseInt(id)))
+     }, 2000)
+   });
+   promesa.then((data)=>{
+     setItem(data)
+   })
+   }, [id])
+
   return (
-    <div className='ItemDetailContainer'>
-        <ItemDetail {...product}/>
+    <div className="container">
+      <ItemDetail item={item}/>
     </div>
   )
 }

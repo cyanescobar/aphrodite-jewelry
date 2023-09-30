@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-.d-flex{
-    justify-content: space-evenly;
+.col-md-3{
+    margin: 25px;
+    padding: 15px;
 }

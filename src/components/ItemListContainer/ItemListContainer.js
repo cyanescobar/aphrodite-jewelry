@@ -1,31 +1,38 @@
-import { useState, useEffect} from 'react';
-import { getProducts, getProductsByCategory } from '../asyncMock';
-import ItemList from '../ItemList/ItemList';
-import '../ItemListContainer/ItemListContainer.css';
-import {useParams} from 'react-router-dom';
+import { useState, useEffect} from "react";
+import ItemList from "../ItemList/ItemList";
+import "../ItemListContainer/ItemListContainer.css";
+import {useParams} from "react-router-dom";
+import arrayProductos from "../../Json/arrayProductos.json";
+import React from "react";
 
 
-const ItemListContainer = ({ greeting }) => {
-    const [products, setProducts] = useState([])
-    const { categoryId } = useParams()
+const ItemListContainer = () => {
+     const [item, setItem] = useState([]);
+     const {id} = useParams();
 
-    useEffect(() => {
-        const asyncFunc = categoryId ? getProductsByCategory : getProducts
-      
-        asyncFunc(categoryId)
-         .then(response => {
-            setProducts(response)
-        })
-        .catch(error => {
-                console.error(error)
-            })
+   useEffect(()=>{
+     const fetchData = async()=>{
+        try{
+        const data = await new Promise((resolve)=>{
+        setTimeout(()=>{
+        resolve(id ? arrayProductos.filter(item => item.category === id) : arrayProductos)
+       }, 2000);
+        });
+        setItem(data);
+      }catch(error){
+        console.log("Error:", error);
+      }
+    };
+    fetchData();
+     }, [id])
 
-    }, [categoryId])
-    return (
-        <div>
-            <h1>{greeting}</h1>
-            <ItemList products={products}/>
-        </div>
-    )
+  return (
+    <div className="container">
+      <div className="row">
+       <ItemList item={item}/>
+      </div>
+    </div>
+  )
 }
+
 export default ItemListContainer

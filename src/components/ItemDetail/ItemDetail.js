@@ -1,21 +1,21 @@
-import ItemCount from '../ItemCount/ItemCount';
-import '../ItemDetail/ItemDetail';
+import React from "react";
+import ItemCount from "../ItemCount/ItemCount";
+import "../ItemDetail/ItemDetail.css";
 
-const ItemDetail = ({ name, img }) => {
-  return ( 
-    <article className='CardItem'>
-        <header className='Header'>
-            <h2 className='ItemHeader'>
-                {name}
-            </h2>
-        </header>
-        <picture>
-             <img src={img} alt={name} className='ItemImg'/>
-        </picture>
-        <footer className='ItemFooter'>
-         <ItemCount initial={1} stock={25} onAdd={(quantity) => console.log('Cantidad agregada',quantity)}/>
-        </footer>
-    </article>
+const ItemDetail = ({item}) => {
+  return (
+    <div className="row">
+     <div className="col-md-4 offset-md-4">
+        <img src={item.img} className="img-fluid"alt={item.name}></img>
+        <h2>{item.name}</h2>
+        <p>{item.description}</p>
+        <p> $ {item.price}</p>
+        <p> Cantidad: {item.stock}</p>
+     </div>
+     <div>
+        <ItemCount stockItems={10}/>
+     </div>
+     </div>
   )
 }
 

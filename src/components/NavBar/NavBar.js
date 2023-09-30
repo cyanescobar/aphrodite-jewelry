@@ -1,7 +1,7 @@
 import CartWidget from "../CartWidget/CartWidget";
 import Logo from "../Logo";
-import '../NavBar/NavBar.css';
-import { NavLink, Link } from 'react-router-dom';
+import "../NavBar/NavBar.css";
+import { NavLink, Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -47,7 +47,7 @@ const NavBar = () => {
           </nav>
         </div>
         <div className="col-6 d-flex justify-content-end  align-items-center">
-          <CartWidget />
+         <Link to="/cart"><CartWidget /></Link> 
         </div>
       </div>
     </div>

@@ -3,15 +3,26 @@
     padding: 0;
     box-sizing: border-box;
 }
-.CardItem{
+.card{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 10px;
     padding: 20px;
+    background-color: rgb(229, 50, 235);
 }
-.btn{
-    border-color: magenta;
+.card-text{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    color: black;
+}
+.card-text-name{
+    text-decoration: underline;
+    transition: all 1s ease;
+}
+.card-text-name:hover{
+    transform: scale(1.1, 1.1);
 }
 .ItemImg{
-    width: 150px;
-    height: 170px;
+    width: 160px;
+    height: 175px;
+    margin-left: 5px;
 }
